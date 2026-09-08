@@ -1,0 +1,56 @@
+[workspace]
+members = [
+    ".",
+    "crates/plumefoil_core",
+    "crates/plumefoil_physics",
+    "crates/plumefoil_validator",
+]
+resolver = "2"
+
+[workspace.dependencies]
+bevy = { version = "0.15", default-features = true }
+avian3d = { version = "0.2", default-features = true }
+leafwing-input-manager = "0.16"
+serde = { version = "1.0", features = ["derive"] }
+bincode = "1.3"
+glam = "0.29"
+thiserror = "2.0"
+tracing = "0.1"
+clap = { version = "4.5", features = ["derive"] }
+
+# Workspace internal crates
+plumefoil_core = { path = "crates/plumefoil_core" }
+plumefoil_physics = { path = "crates/plumefoil_physics" }
+
+[package]
+name = "plumefoil-racing"
+version = "0.1.0"
+edition = "2024"
+authors = ["Ka10U"]
+description = "Plumefoil Racing - 3D efoil simulation and racing game"
+
+[dependencies]
+bevy = { workspace = true }
+avian3d = { workspace = true }
+leafwing-input-manager = { workspace = true }
+serde = { workspace = true }
+bincode = { workspace = true }
+glam = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+plumefoil_core = { workspace = true }
+plumefoil_physics = { workspace = true }
+
+# Fast dev profile with smooth 60 FPS in debug
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+# Optimized release profile
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true

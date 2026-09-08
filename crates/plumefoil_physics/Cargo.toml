@@ -1,0 +1,12 @@
+[package]
+name = "plumefoil_physics"
+version = "0.1.0"
+edition = "2024"
+authors = ["Ka10U"]
+description = "Deterministic hydrodynamics, wing lift/drag, and buoyancy simulation for Plumefoil Racing"
+
+[dependencies]
+plumefoil_core = { workspace = true }
+glam = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }

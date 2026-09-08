@@ -6,7 +6,7 @@ This directory contains granular, execution-ready implementation plans for **Plu
 
 | # | Plan File | Focus Area | Status |
 |---|---|---|---|
-| **00** | `00_project_setup_and_toolchain.md` | Cargo workspace, Bevy 0.15+, fast linkers, GitHub Actions CI/CD | Pending |
+| **00** | `00_project_setup_and_toolchain.md` | Cargo workspace, Bevy 0.15+, fast linkers, GitHub Actions CI/CD | Completed |
 | **01** | `01_hydrodynamic_physics_and_buoyancy.md` | Multi-point buoyancy, wing lift/drag, stall, ventilation, force gizmos | Pending |
 | **02** | `02_efoil_assembly_and_component_model.md` | Modular efoil data model (board, mast, wings, motor, battery) | Pending |
 | **03** | `03_rider_stance_and_control_mechanics.md` | Rider dynamic center of mass, weight shift torque, input abstraction | Pending |

@@ -1,0 +1,12 @@
+[package]
+name = "plumefoil_core"
+version = "0.1.0"
+edition = "2024"
+authors = ["Ka10U"]
+description = "Core data types, physical constants, and replay serialization for Plumefoil Racing"
+
+[dependencies]
+serde = { workspace = true }
+bincode = { workspace = true }
+glam = { workspace = true }
+thiserror = { workspace = true }

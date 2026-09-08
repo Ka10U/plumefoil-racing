@@ -26,6 +26,7 @@ desktop.ini
 *.FCStd1
 *.tmp
 *.log
+*.step
 
 # Mobile build artifacts
 *.apk

@@ -1,0 +1,12 @@
+[package]
+name = "plumefoil_validator"
+version = "0.1.0"
+edition = "2024"
+authors = ["Ka10U"]
+description = "Headless CLI for deterministic replay verification and anti-cheat certification"
+
+[dependencies]
+plumefoil_core = { workspace = true }
+plumefoil_physics = { workspace = true }
+clap = { workspace = true }
+tracing = { workspace = true }
