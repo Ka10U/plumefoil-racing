@@ -88,11 +88,20 @@ At each fixed physics step $\Delta t$, the simulation evaluates:
      $$T = k_T \cdot \text{throttle} \cdot \left(1 - \frac{v_{\text{advance}}}{v_{\text{max\_prop}}}\right)$$
    - Battery state: Voltage curve discharge model based on throttle draw and motor load.
 
-4. **Rider Stance & Dynamic Center of Mass**:
-   - The rider entity models dynamic foot pressure and center of gravity offset:
-     - Pitch axis $\to$ shifts CoM forward/rearward relative to the mast pivot.
-     - Roll axis $\to$ shifts CoM laterally (heel/toe pressure), inducing banking torque.
-   - Torque applied to board: $\vec{\tau}_{\text{rider}} = \vec{r}_{\text{rider\_CoM}} \times (m_{\text{rider}} \vec{g})$.
+4. **Rider Counter-Balancing Dynamics (Unstable Equilibrium, Gravity & Centrifugal Force)**:
+   - Hydrofoil flight operates in a regime of **inherently unstable equilibrium**. Hydrodynamic lift acting at the underwater wing's center of pressure generates strong pitching moments that vary nonlinearly with angle of attack ($\alpha$) and velocity.
+   - Stable flight is maintained dynamically by the rider acting as an active **counter-balancing force and torque vector** applied to the board:
+     $$\vec{F}_{\text{rider}} = \vec{F}_{\text{rider, gravity}} + \vec{F}_{\text{rider, centrifugal}}$$
+     where:
+     - **Gravity Force**: $\vec{F}_{\text{rider, gravity}} = m_{\text{rider}} \vec{g}$ (downward in world space).
+     - **Centrifugal Force (Carving)**: When carving turns at angular velocity $\vec{\omega}$ and linear velocity $\vec{v}$:
+       $$\vec{F}_{\text{rider, centrifugal}} = -m_{\text{rider}} (\vec{\omega} \times \vec{v})$$
+       When banking, the rider leans inward to balance centrifugal force against gravity in a coordinated turn.
+   - **Net Counter-Balancing Torque**: Applied to the efoil rigid body about its center of mass:
+     $$\vec{\tau}_{\text{rider}} = \vec{r}_{\text{rider}} \times \vec{F}_{\text{rider}}$$
+     - **Pitch Axis**: Fore/aft weight shift controls $\vec{r}_{\text{rider}} \cdot \hat{z}$, balancing wing pitching moments and stabilizer downforce to hold the narrow angle-of-attack window for level flight.
+     - **Roll Axis**: Heel/toe lateral shift controls $\vec{r}_{\text{rider}} \cdot \hat{x}$, initiating banking and balancing against centrifugal carve forces.
+   - **Flight Envelope Stability**: If the rider's counter-balancing falls outside the operating window, positive feedback takes over (over-pitching $\to$ foil surface breach/stall; under-pitching $\to$ nosedive/pearl), creating authentic "easy to learn, hard to master" flight dynamics.
 
 ---
 

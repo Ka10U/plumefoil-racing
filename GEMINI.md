@@ -65,11 +65,13 @@ $$\vec{\tau}_{\text{total}} = \sum (\vec{r}_i \times \vec{F}_i) + \vec{\tau}_{\t
 3. **Surface Breaching & Ventilation**:
    - If the front wing pierces the water surface ($y_{\text{wing}} > h_{\text{water}}$), foil lift immediately collapses ($C_L \to 0$, air entrainment).
    - Results in realistic nose drop / wipeout if uncorrected.
-4. **Rider Weight Shift (Pitch & Roll Control)**:
-   - The rider does not turn a rudder; they **shift their stance and center of mass (CoM)**.
-   - Inputs:
-     - Pitch axis: Shift weight forward (pushes nose down, decreases $\alpha$) or backward (pulls nose up, increases $\alpha$).
-     - Roll axis: Shift weight heel-to-toe (induces bank angle, rolling the hydrofoil to carve turns).
+4. **Rider Counter-Balancing Dynamics (Unstable Equilibrium, Gravity & Centrifugal Force)**:
+   - Hydrofoil flight operates in an inherently **unstable/metastable equilibrium**: underwater wing lift generates nonlinear pitching moments that change rapidly with speed and angle of attack.
+   - The rider acts as an active **counter-balancing force vector** on the deck:
+     $$\vec{F}_{\text{rider}} = \vec{F}_{\text{gravity}} + \vec{F}_{\text{centrifugal}} = m_{\text{rider}} \left( \vec{g} - (\vec{\omega} \times \vec{v}) \right)$$
+   - Counter-balancing torques ($\vec{\tau}_{\text{rider}} = \vec{r}_{\text{rider}} \times \vec{F}_{\text{rider}}$):
+     - *Pitch axis*: Rider shifts stance fore/aft to balance the wing's pitching moment and stabilizer trim within the narrow operating window for flight.
+     - *Roll axis*: Rider shifts stance heel-to-toe to initiate banking and balance against lateral centrifugal force in coordinated carving turns.
    - Motor Throttle: Scalar trigger $[0.0, 1.0]$ controlling electric motor torque and propeller thrust.
 
 ---
